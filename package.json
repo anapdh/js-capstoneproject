@@ -1,33 +1,38 @@
 {
-  "name": "js-capstoneproject",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "phaser3-project-template",
+  "version": "1.1.2",
+  "description": "A Phaser 3 Project Template",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack serve --mode development --open",
-    "watch": "webpack --watch"
+    "build": "webpack --config webpack/prod.js ",
+    "start": "webpack-dev-server --config webpack/base.js --open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anapdh/js-capstoneproject.git"
+    "url": "git+https://github.com/photonstorm/phaser3-project-template.git"
   },
-  "keywords": [
-    "js",
-    "phaser",
-    "javascript"
-  ],
-  "author": "Ana Paula Hübner",
+  "author": "Richard Davey <rdavey@gmail.com> (http://www.photonstorm.com)",
   "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
   "bugs": {
-    "url": "https://github.com/anapdh/js-capstoneproject/issues"
+    "url": "https://github.com/photonstorm/phaser3-project-template/issues"
   },
-  "homepage": "https://github.com/anapdh/js-capstoneproject#readme",
+  "homepage": "https://github.com/photonstorm/phaser3-project-template#readme",
   "devDependencies": {
-    "html-webpack-plugin": "^5.3.1",
-    "webpack": "^5.39.0",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^3.1.0",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "phaser": "^3.50.0"
   }
 }
