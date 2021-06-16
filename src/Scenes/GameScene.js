@@ -52,6 +52,8 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1
     });
 
+    this.physics.add.collider(player, platforms);
+
     // ========================= STARS GROUP =========================
 
     stars = this.physics.add.group()
@@ -91,7 +93,7 @@ export default class GameScene extends Phaser.Scene {
       player.anims.play('turn');
     }
 
-    if (cursors.up.isDown && player.body.touching.down) { // jump
+    if (cursors.up.isDown) { // jump
       player.setVelocityY(-550);
     }
 
