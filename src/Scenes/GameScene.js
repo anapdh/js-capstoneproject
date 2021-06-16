@@ -2,6 +2,7 @@ import 'phaser';
 
 let platforms;
 let player;
+let stars;
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -15,17 +16,20 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('ground', 'assets/ground.png');
     this.load.spritesheet('bunny', 'assets/bunny-sheet.png', { frameWidth: 48, frameHeight: 32 })
     this.load.spritesheet('block', 'assets/wheels_sheet.png', { frameWidth: 66, frameHeight: 64 });
+    this.load.image('star', 'assets/star.png');
   }
 
   create() {
     this.add.image(400, 300, 'bg')
     this.add.image(400, 570, 'ground')
 
-    //PLATFORM GROUP
+    // ========================= PLATFORM GROUP =========================
+
     platforms = this.physics.add.staticGroup();
     platforms.create(400, 565, 'ground').setScale(2).refreshBody();
 
-    //PLAYER GROUP
+    // ========================= PLAYER GROUP =========================
+
     player = this.physics.add.sprite(100, 520, 'bunny');
 
     this.anims.create({
@@ -48,15 +52,30 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1
     });
 
+    // ========================= STARS GROUP =========================
 
-    //BLOCK GROUP
+    stars = this.physics.add.group()
+    stars.enableBody = true;
+    stars.create(200, 340, 'star');
+
+    // Create some enemies.
+    for (let i = 0; i < 8; i++)
+    {
+      createStar();
+    }
+    // Tap to create new baddie sprites.
+    //game.input.onTap.add(createStar, this);
+
+    // ========================= BLOCK GROUP =========================
+
     let block1 = this.add.sprite(400, 502, 'block', 11)
     let block2 = this.add.sprite(600, 503, 'block', 0)
   }
 
   update() {
-    let cursors = this.input.keyboard.createCursorKeys(); // creates cursor moves for player
-    if (cursors.left.isDown) { // isDown = holded down
+    // MOVE PLAYER WITH CURSOR
+    let cursors = this.input.keyboard.createCursorKeys();
+    if (cursors.left.isDown) {
       player.setVelocityX(-160);
 
       player.anims.play('left', true);
@@ -75,5 +94,21 @@ export default class GameScene extends Phaser.Scene {
     if (cursors.up.isDown && player.body.touching.down) { // jump
       player.setVelocityY(-550);
     }
+
+    createStar();
   }
 };
+
+// function getRandomArbitrary() {
+//   return Math.random() * (600 - 325) + 325;
+// }
+
+//randomly generates star
+function createStar() {
+  let star = stars.create((360 + Math.random() * 200, 120 + Math.random() * 200, 'star'));
+  moveIndividual(star);
+}
+
+function moveIndividual(moved) {
+  moved.body.velocity.y = 400;
+}
