@@ -1,14 +1,29 @@
 import 'phaser';
 
-// global game options
 let gameOptions = {
-  platformStartSpeed: 350,
-  spawnRange: [100, 350],
-  platformSizeRange: [100, 300],
+  // global game options
+  // platform speed range, in pixels per second
+  platformSpeedRange: [300, 300],
+  // spawn range, how far should be the rightmost platform from the right edge
+  // before next platform spawns, in pixels
+  spawnRange: [80, 300],
+  // platform width range, in pixels
+  platformSizeRange: [90, 300],
+  // a height range between rightmost platform and next platform to be spawned
+  platformHeightRange: [-5, 5],
+  // a scale to be multiplied by platformHeightRange
+  platformHeighScale: 20,
+  // platform max and min height, as screen height ratio
+  platformVerticalLimit: [0.4, 0.8],
+  // player gravity
   playerGravity: 900,
+  // player jump force
   jumpForce: 400,
+  // player starting X position
   playerStartPosition: 200,
+  // consecutive jumps allowed
   jumps: 2,
+  // % of probability a coin appears on the platform
   coinPercent: 25
 }
 
@@ -60,14 +75,14 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
+    this.addPlatform(500, 600, 550);
+    this.playerJumps = 0;
+
     // ==================== PLAYER GROUP ====================
     // number of consecutive jumps made by the player
-    this.playerJumps = 0;
-    this.addPlatform(500, 250);
 
     this.player = this.physics.add.sprite(gameOptions.playerStartPosition, 300, "player");
     this.player.setGravityY(gameOptions.playerGravity);
-
 
     // setting collisions between the player and the platform group
     this.physics.add.collider(this.player, this.platformGroup, () => {
@@ -76,7 +91,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.coinGroup, function (coin) {
+    this.physics.add.overlap(this.player, this.coinGroup, function (player, coin) {
       this.tweens.add({
         targets: coin,
         y: coin.y - 100,
@@ -104,9 +119,13 @@ export default class GameScene extends Phaser.Scene {
 
     // recycling platforms
     let minDistance = 800;
-    this.platformGroup.getChildren().forEach(function (platform) {
-      const platformDistance = 800 - platform.x - platform.displayWidth / 2;
-      minDistance = Math.min(minDistance, platformDistance);
+    let rightmostPlatformHeight = 0;
+    this.platformGroup.getChildren().forEach(platform => {
+      let platformDistance = 800 - platform.x - platform.displayWidth / 2;
+      if (platformDistance < minDistance) {
+        minDistance = platformDistance;
+        rightmostPlatformHeight = platform.y;
+      }
       if (platform.x < - platform.displayWidth / 2) {
         this.platformGroup.killAndHide(platform);
         this.platformGroup.remove(platform);
@@ -114,7 +133,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling coins
-    this.coinGroup.getChildren().forEach(function (coin) {
+    this.coinGroup.getChildren().forEach(coin => {
       if (coin.x < - coin.displayWidth / 2) {
         this.coinGroup.killAndHide(coin);
         this.coinGroup.remove(coin);
@@ -123,30 +142,37 @@ export default class GameScene extends Phaser.Scene {
 
     // adding new platforms
     if (minDistance > this.nextPlatformDistance) {
-      const nextPlatformWidth = Phaser.Math.Between(gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1]);
-      this.addPlatform(nextPlatformWidth, 800 + nextPlatformWidth / 2);
+      let nextPlatformWidth = Phaser.Math.Between(gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1]);
+      let platformRandomHeight = gameOptions.platformHeighScale * Phaser.Math.Between(gameOptions.platformHeightRange[0], gameOptions.platformHeightRange[1]);
+      let nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
+      let minPlatformHeight = 600 * gameOptions.platformVerticalLimit[0];
+      let maxPlatformHeight = 600 * gameOptions.platformVerticalLimit[1];
+      let nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap, minPlatformHeight, maxPlatformHeight);
+      this.addPlatform(nextPlatformWidth, 800 + nextPlatformWidth / 2, nextPlatformHeight);
     }
   }
 
   // FUNCTIONS
-
-  // the core of the script: platform are added from the pool or created on the fly
-  addPlatform(platformWidth, posX) {
+  addPlatform(platformWidth, posX, posY) {
+    this.addedPlatforms++;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
       platform.x = posX;
+      platform.y = posY;
       platform.active = true;
       platform.visible = true;
       this.platformPool.remove(platform);
+      let newRatio = platformWidth / platform.displayWidth;
+      platform.displayWidth = platformWidth;
+      platform.tileScaleX = 1 / platform.scaleX;
     } else {
-      platform = this.physics.add.image(posX, Phaser.Math.Between(400, 600), "platform");
-      platform.setImmovable(true);
-      platform.setVelocityX(gameOptions.platformStartSpeed * -1);
-      platform.setFrictionX(0);
+      platform = this.add.tileSprite(posX, posY, platformWidth, 50, "platform");
+      this.physics.add.existing(platform);
+      platform.body.setImmovable(true);
+      platform.body.setVelocityX(Phaser.Math.Between(gameOptions.platformSpeedRange[0], gameOptions.platformSpeedRange[1]) * -1);
       this.platformGroup.add(platform);
     }
-    platform.displayWidth = platformWidth;
     this.nextPlatformDistance = Phaser.Math.Between(gameOptions.spawnRange[0], gameOptions.spawnRange[1]);
 
     // is there a coin over the platform?
@@ -160,8 +186,7 @@ export default class GameScene extends Phaser.Scene {
           coin.active = true;
           coin.visible = true;
           this.coinPool.remove(coin);
-        }
-        else {
+        } else {
           let coin = this.physics.add.sprite(posX, posY - 96, "coin");
           coin.setImmovable(true);
           coin.setVelocityX(platform.body.velocity.x);
@@ -172,7 +197,6 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  // the player jumps when on the ground, or once in the air as long as there are jumps left and the first jump was on the ground
   jump() {
     if (this.player.body.touching.down || (this.playerJumps > 0 && this.playerJumps < gameOptions.jumps)) {
       if (this.player.body.touching.down) {
@@ -183,4 +207,3 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 };
-
