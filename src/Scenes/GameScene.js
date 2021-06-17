@@ -3,6 +3,7 @@ import 'phaser';
 let platforms;
 let player;
 let stars;
+let obstacles;
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -20,7 +21,12 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(400, 300, 'bg')
+    
+  const width = this.scale.width
+  const height = this.scale.height
+
+  this.add.image(createAlignedBg(this, 2, 'bg', 0.50))
+
     this.add.image(400, 570, 'ground')
 
     // ========================= PLATFORM GROUP =========================
@@ -58,10 +64,10 @@ export default class GameScene extends Phaser.Scene {
 
     stars = this.physics.add.group()
     stars.enableBody = true;
-    stars.create(200, 340, 'star');
+    stars.create(400, 300, 'star');
 
     // Create some enemies.
-    for (let i = 0; i < 8; i++)
+    for (let i = 0; i < 1; i++)
     {
       createStar();
     }
@@ -72,20 +78,27 @@ export default class GameScene extends Phaser.Scene {
 
     let block1 = this.add.sprite(400, 502, 'block', 11)
     let block2 = this.add.sprite(600, 503, 'block', 0)
+
+    this.cameras.main.setBounds(0, 0, width * 3)
   }
 
   update() {
     // MOVE PLAYER WITH CURSOR
     let cursors = this.input.keyboard.createCursorKeys();
+    const cam = this.cameras.main
+    const speed = 2
+
     if (cursors.left.isDown) {
-      player.setVelocityX(-160);
+      player.setVelocityX(-120);
 
       player.anims.play('left', true);
+      cam.scrollX -= speed
     }
     else if (cursors.right.isDown) {
-      player.setVelocityX(160);
+      player.setVelocityX(120);
 
       player.anims.play('right', true);
+      cam.scrollX += speed
     }
     else {
       player.setVelocityX(0);
@@ -94,7 +107,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     if (cursors.up.isDown) { // jump
-      player.setVelocityY(-550);
+      player.setVelocityY(-400);
     }
 
     createStar();
@@ -113,4 +126,15 @@ function createStar() {
 
 function moveIndividual(moved) {
   moved.body.velocity.y = 400;
+}
+
+const createAlignedBg = (scene, count, texture, scrollFactor) => {
+  let bgX = 0;
+  for (let i = 0; i < count; i++) {
+    const repeat = scene.add.image(bgX, scene.scale.height, texture)
+      .setOrigin(0, 1)
+      .setScrollFactor(scrollFactor)
+
+      bgX += repeat.width
+  }
 }
