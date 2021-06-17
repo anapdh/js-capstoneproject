@@ -4,7 +4,7 @@ import 'phaser';
 let gameOptions = {
   platformStartSpeed: 350,
   spawnRange: [100, 350],
-  platformSizeRange: [50, 250],
+  platformSizeRange: [100, 300],
   playerGravity: 900,
   jumpForce: 400,
   playerStartPosition: 200,
@@ -18,7 +18,7 @@ export default class GameScene extends Phaser.Scene {
 
   preload() {
     this.load.image("bg", 'assets/background.png');
-    this.load.image("platform", "assets/ground.png");
+    this.load.image("platform", "assets/building.png");
     this.load.spritesheet('player', 'assets/bunny-sheet2.png', { frameWidth: 48, frameHeight: 32 })
   }
 
@@ -46,13 +46,13 @@ export default class GameScene extends Phaser.Scene {
     });
 
     // adding a platform to the game, the arguments are platform width and x position
-    this.addPlatform(800, 320);
+    this.addPlatform(500, 250);
 
     // ==================== PLAYER GROUP ====================
     // number of consecutive jumps made by the player
     this.playerJumps = 0;
 
-    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, 600 / 2, "player");
+    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, 300, "player");
     this.player.setGravityY(gameOptions.playerGravity);
 
     // player animation
@@ -111,8 +111,7 @@ export default class GameScene extends Phaser.Scene {
       platform.visible = true;
       this.platformPool.remove(platform);
     } else {
-      platform = this.physics.add.image(posX, Phaser.Math.Between(464, 650), "platform");
-      platform.setScale(2);
+      platform = this.physics.add.image(posX, Phaser.Math.Between(400, 600), "platform");
       platform.setImmovable(true);
       platform.setVelocityX(gameOptions.platformStartSpeed * -1);
       platform.setFrictionX(0);
