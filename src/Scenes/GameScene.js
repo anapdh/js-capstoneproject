@@ -27,8 +27,6 @@ export default class GameScene extends Phaser.Scene {
 
   this.add.image(createAlignedBg(this, 2, 'bg', 0.50))
 
-    this.add.image(400, 570, 'ground')
-
     // ========================= PLATFORM GROUP =========================
 
     platforms = this.physics.add.staticGroup();
@@ -114,9 +112,9 @@ export default class GameScene extends Phaser.Scene {
   }
 };
 
-// function getRandomArbitrary() {
-//   return Math.random() * (600 - 325) + 325;
-// }
+function getRandomArbitrary() {
+ return Math.random() * (600 - 325) + 325;
+}
 
 //randomly generates star
 function createStar() {
