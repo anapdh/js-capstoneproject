@@ -1,17 +1,21 @@
 import 'phaser';
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Preloader');
   }
 
-  init () {
+  init() {
     this.readyCount = 0;
   }
 
-  preload () {
+  preload() {
     // add logo image
     this.add.image(400, 200, 'logo');
+    this.load.image("bg", 'assets/background.png');
+    this.load.image("platform", "assets/building.png");
+    this.load.spritesheet('player', 'assets/bunny-sheet2.png', { frameWidth: 48, frameHeight: 32 });
+    this.load.spritesheet("coin", "assets/coin.png", { frameWidth: 20, frameHeight: 20 });
 
     // display progress bar
     var progressBar = this.add.graphics();
@@ -88,7 +92,29 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
   }
 
-  ready () {
+  create() {
+    // player animation
+    this.anims.create({
+      key: 'move',
+      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    //coin animation
+    this.anims.create({
+      key: "rotate",
+      frames: this.anims.generateFrameNumbers("coin", {
+        start: 0,
+        end: 5
+      }),
+      frameRate: 15,
+      yoyo: true,
+      repeat: -1
+    });
+  }
+
+  ready() {
     this.scene.start('Title');
     this.readyCount++;
     if (this.readyCount === 2) {

@@ -8,7 +8,8 @@ let gameOptions = {
   playerGravity: 900,
   jumpForce: 400,
   playerStartPosition: 200,
-  jumps: 2
+  jumps: 2,
+  coinPercent: 25
 }
 
 export default class GameScene extends Phaser.Scene {
@@ -16,18 +17,13 @@ export default class GameScene extends Phaser.Scene {
     super("Game");
   }
 
-  preload() {
-    this.load.image("bg", 'assets/background.png');
-    this.load.image("platform", "assets/building.png");
-    this.load.spritesheet('player', 'assets/bunny-sheet2.png', { frameWidth: 48, frameHeight: 32 })
-  }
-
   create() {
 
-    this.add.image(400, 300, 'bg')
+    this.add.image(400, 300, 'bg');
 
     // ==================== PLATFORM GROUP ====================
     // group with all active platforms.
+    this.addedPlatforms = 0;
     this.platformGroup = this.add.group({
 
       // once a platform is removed, it's added to the pool
@@ -45,30 +41,55 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
-    // adding a platform to the game, the arguments are platform width and x position
-    this.addPlatform(500, 250);
+    // ==================== COIN GROUP ====================
+
+    this.coinGroup = this.add.group({
+
+      // once a coin is removed, it's added to the pool
+      removeCallback: function (coin) {
+        coin.scene.coinPool.add(coin)
+      }
+    });
+
+    // coin pool
+    this.coinPool = this.add.group({
+
+      // once a coin is removed from the pool, it's added to the active coins group
+      removeCallback: function (coin) {
+        coin.scene.coinGroup.add(coin)
+      }
+    });
 
     // ==================== PLAYER GROUP ====================
     // number of consecutive jumps made by the player
     this.playerJumps = 0;
+    this.addPlatform(500, 250);
 
     this.player = this.physics.add.sprite(gameOptions.playerStartPosition, 300, "player");
     this.player.setGravityY(gameOptions.playerGravity);
 
-    // player animation
-    this.anims.create({
-      key: 'move',
-      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
-      frameRate: 10,
-      repeat: -1
-    });
 
     // setting collisions between the player and the platform group
     this.physics.add.collider(this.player, this.platformGroup, () => {
       if (!this.player.anims.isPlaying) {
         this.player.anims.play('move');
       }
-    }, null);
+    }, null, this);
+
+    this.physics.add.overlap(this.player, this.coinGroup, function (coin) {
+      this.tweens.add({
+        targets: coin,
+        y: coin.y - 100,
+        alpha: 0,
+        duration: 800,
+        ease: "Cubic.easeOut",
+        callbackScope: this,
+        onComplete: function () {
+          this.coinGroup.killAndHide(coin);
+          this.coinGroup.remove(coin);
+        }
+      });
+    }, null, this);
 
     // checking for input
     this.input.on("pointerdown", this.jump, this);
@@ -89,6 +110,14 @@ export default class GameScene extends Phaser.Scene {
       if (platform.x < - platform.displayWidth / 2) {
         this.platformGroup.killAndHide(platform);
         this.platformGroup.remove(platform);
+      }
+    }, this);
+
+    // recycling coins
+    this.coinGroup.getChildren().forEach(function (coin) {
+      if (coin.x < - coin.displayWidth / 2) {
+        this.coinGroup.killAndHide(coin);
+        this.coinGroup.remove(coin);
       }
     }, this);
 
@@ -119,6 +148,28 @@ export default class GameScene extends Phaser.Scene {
     }
     platform.displayWidth = platformWidth;
     this.nextPlatformDistance = Phaser.Math.Between(gameOptions.spawnRange[0], gameOptions.spawnRange[1]);
+
+    // is there a coin over the platform?
+    if (this.addedPlatforms > 1) {
+      if (Phaser.Math.Between(1, 100) <= gameOptions.coinPercent) {
+        if (this.coinPool.getLength()) {
+          let coin = this.coinPool.getFirst();
+          coin.x = posX;
+          coin.y = posY - 96;
+          coin.alpha = 1;
+          coin.active = true;
+          coin.visible = true;
+          this.coinPool.remove(coin);
+        }
+        else {
+          let coin = this.physics.add.sprite(posX, posY - 96, "coin");
+          coin.setImmovable(true);
+          coin.setVelocityX(platform.body.velocity.x);
+          coin.anims.play("rotate");
+          this.coinGroup.add(coin);
+        }
+      }
+    }
   }
 
   // the player jumps when on the ground, or once in the air as long as there are jumps left and the first jump was on the ground
