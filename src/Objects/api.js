@@ -7,6 +7,9 @@ const api = (() => {
         `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${key}/scores/`,
         {
           method: 'GET',
+          mode: 'cors',
+          redirect: 'follow',
+          referrerPolicy: 'no-referrer',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',

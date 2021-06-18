@@ -1,4 +1,4 @@
-import api from '../Objects/api'
+import scoreAPI from '../Objects/api';
 import Button from '../Objects/Button';
 
 export default class LeaderboardScene extends Phaser.Scene {
@@ -9,25 +9,25 @@ export default class LeaderboardScene extends Phaser.Scene {
   create() {
     this.add.image(400, 300, 'bg');
 
-    const progressBox = this.add.graphics();
-    progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(0, 0, 800, 600);
+     const progressBox = this.add.graphics();
+     progressBox.fillStyle(0x222222, 0.8);
+     progressBox.fillRect(0, 0, 800, 600);
 
-    this.topTenText = this.add.text(400, 50, 'Top Ten Scores', { fontSize: '32px', fill: '#fff' });
-    this.topTenText.setOrigin(0.5, 0.5);
+     this.topTenText = this.add.text(400, 50, 'Top 10 Scores', { fontSize: '32px', fill: '#fff' });
+     this.topTenText.setOrigin(0.5, 0.5);
 
-    getScore().then((resp) => {
-      const sortedArray = sortArray(resp.result);
+     scoreAPI.ScoreList().then((response) => {
+      const leaderB = response.result;
       for (let i = 0; i < 10; i += 1) {
-        this.scoreText = this.add.text(250, i * 40 + 100, `${sortedArray[i].user}: ${sortedArray[i].score} seconds`, { fontSize: '25px', fill: '#fff' });
+        this.scoreText = this.add.text(250, i * 40 + 100, `${leaderB[i].user}: ${leaderB[i].score} points`, { fontSize: '25px', fill: '#fff' });
       }
     });
-
+    
     // Title Score
     this.titleButton = this.add.sprite(100, 200, 'blueButton1').setInteractive();
     this.centerButton(this.titleButton, -2.2);
 
-    this.titleText = this.add.text(0, 0, 'Title Screen', { fontSize: '24px', fill: '#fff' });
+    this.titleText = this.add.text(0, 0, 'Menu', { fontSize: '24px', fill: '#fff' });
     this.centerButtonText(this.titleText, -2.2);
 
     this.titleButton.on('pointerdown', () => {
