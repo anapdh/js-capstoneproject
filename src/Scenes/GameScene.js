@@ -1,5 +1,8 @@
 import 'phaser';
 
+let score = 0;
+let scoreText;
+
 let gameOptions = {
   // global game options
   // platform speed range, in pixels per second
@@ -24,7 +27,7 @@ let gameOptions = {
   // consecutive jumps allowed
   jumps: 2,
   // % of probability a coin appears on the platform
-  coinPercent: 25
+  coinPercent: 50
 }
 
 export default class GameScene extends Phaser.Scene {
@@ -92,6 +95,9 @@ export default class GameScene extends Phaser.Scene {
     }, null, this);
 
     this.physics.add.overlap(this.player, this.coinGroup, function (player, coin) {
+      playerJumps = 0;
+      score += 10;
+      scoreText.setText('Score: ' + score);
       this.tweens.add({
         targets: coin,
         y: coin.y - 100,
@@ -108,12 +114,15 @@ export default class GameScene extends Phaser.Scene {
 
     // checking for input
     this.input.on("pointerdown", this.jump, this);
+
+    // SCORES
+    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' })
   }
 
   update() {
     // game over
     if (this.player.y > 600) {
-      this.scene.start("Game"); // game over here
+      this.scene.start("GameOver", { score: Phaser.Math.RoundTo(this.score, 0) });
     }
     this.player.x = gameOptions.playerStartPosition;
 
