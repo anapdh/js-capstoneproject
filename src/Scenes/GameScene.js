@@ -79,11 +79,9 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.addPlatform(500, 600, 550);
-    this.playerJumps = 0;
-
+    
     // ==================== PLAYER GROUP ====================
-    // number of consecutive jumps made by the player
-
+    
     this.player = this.physics.add.sprite(gameOptions.playerStartPosition, 300, "player");
     this.player.setGravityY(gameOptions.playerGravity);
 
@@ -121,7 +119,8 @@ export default class GameScene extends Phaser.Scene {
   update() {
     // game over
     if (this.player.y > 600) {
-      this.scene.start("GameOver", { score: Phaser.Math.RoundTo(this.score, 0) });
+      this.scene.start("Game")
+      //game over comes here when created ("GameOver", { score: Phaser.Math.RoundTo(this.score, 0) });
     }
     this.player.x = gameOptions.playerStartPosition;
 
