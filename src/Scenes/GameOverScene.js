@@ -22,7 +22,7 @@ export default class GameOverScene extends Phaser.Scene {
 
     this.score = this.add.text(400, 200, `Your score is: ${score}`, {
       font: '35px monospace',
-      fill: '#888',
+      fill: '#555',
     });
     this.score.setOrigin(0.5, 0.5);
 
@@ -37,14 +37,20 @@ export default class GameOverScene extends Phaser.Scene {
     };
 
     // Play button
-    this.gameButton = btn(this, 400, 400, 'Play Again', 35);
+    this.gameButton = btn(this, 400, 400, 'Play Again', 35), {
+      font: '35px monospace',
+      fill: '#555',
+    }
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Game');
     });
 
     // Menu button
-    this.gameButton = btn(this, 400, 500, 'Menu', 35);
+    this.gameButton = btn(this, 400, 500, 'Menu', 35), {
+      font: '35px monospace',
+      fill: '#555',
+    }
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Title');
