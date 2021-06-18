@@ -95,7 +95,6 @@ export default class GameScene extends Phaser.Scene {
     }, null, this);
 
     this.physics.add.overlap(this.player, this.coinGroup, function (player, coin) {
-      playerJumps = 0;
       score += 10;
       scoreText.setText('Score: ' + score);
       this.tweens.add({
