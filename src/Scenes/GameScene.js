@@ -1,4 +1,5 @@
 import 'phaser';
+import LocalStorage from '../Objects/LocalStorage';
 
 let score = 0;
 let scoreText;
@@ -109,6 +110,7 @@ export default class GameScene extends Phaser.Scene {
       });
     }, null, this);
 
+
     // checking for input
     this.input.on("pointerdown", this.jump, this);
 
@@ -119,8 +121,11 @@ export default class GameScene extends Phaser.Scene {
   update() {
     // game over
     if (this.player.y > 600) {
-      this.scene.start("Game")
-      //game over comes here when created ("GameOver", { score: Phaser.Math.RoundTo(this.score, 0) });
+      this.physics.pause();
+      this.scene.stop('Game');
+      this.scene.start('GameOver');
+      LocalStorage.saveScore(score);
+      score = 0;
     }
     this.player.x = gameOptions.playerStartPosition;
 
