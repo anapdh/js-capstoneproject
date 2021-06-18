@@ -98,10 +98,6 @@ export default class GameScene extends Phaser.Scene {
       scoreText.setText('Score: ' + score);
       this.tweens.add({
         targets: coin,
-        y: coin.y - 100,
-        alpha: 0,
-        duration: 800,
-        ease: "Cubic.easeOut",
         callbackScope: this,
         onComplete: function () {
           this.coinGroup.killAndHide(coin);
