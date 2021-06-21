@@ -9,7 +9,7 @@ import CreditsScene from './Scenes/CreditsScene';
 import GameOverScene from './Scenes/GameOverScene';
 import ScoresScene from './Scenes/ScoresScene';
 import LeaderboardScene from './Scenes/LeaderBoardScene';
-import Model from './Model';
+import Model from './Objects/Model';
 
 class Game extends Phaser.Game {
   constructor () {

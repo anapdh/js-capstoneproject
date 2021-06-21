@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["@babel/env", {
+    ["@babel/preset-env", {
       "targets": {
         "browsers": [
           ">0.25%",
@@ -8,7 +8,7 @@
           "not op_mini all"
         ]
       },
-      "modules": false
+      "modules": "auto"
     }]
   ],
 }
