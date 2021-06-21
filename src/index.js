@@ -1,4 +1,6 @@
-import 'phaser';
+/* eslint-disable import/no-extraneous-dependencies */
+
+import Phaser from 'phaser';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
 import BootScene from './Scenes/BootScene';
@@ -12,7 +14,7 @@ import LeaderboardScene from './Scenes/LeaderBoardScene';
 import Model from './Objects/Model';
 
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
     const model = new Model();
     this.globals = { model, bgMusic: null };

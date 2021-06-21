@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import Phaser from 'phaser';
 import ScoresScene from './ScoresScene';
 import LocalStorage from '../Objects/LocalStorage';
@@ -36,30 +38,21 @@ export default class GameOverScene extends Phaser.Scene {
     };
 
     // Play button
-    this.gameButton = btn(this, 400, 400, 'Play Again', 35), {
-      font: '35px monospace',
-      fill: '#555',
-    }
+    this.gameButton = btn(this, 400, 400, 'Play Again', 35, { font: '35px monospace', fill: '#555' });
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Game');
     });
 
     // Leaderboard button
-    this.gameButton = btn(this, 400, 460, 'Leaderboard', 35), {
-      font: '35px monospace',
-      fill: '#555',
-    }
+    this.gameButton = btn(this, 400, 460, 'Leaderboard', 35, { font: '35px monospace', fill: '#555' });
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Leaderboard');
     });
 
     // Menu button
-    this.gameButton = btn(this, 400, 520, 'Menu', 35), {
-      font: '35px monospace',
-      fill: '#555',
-    }
+    this.gameButton = btn(this, 400, 520, 'Menu', 35, { font: '35px monospace', fill: '#555' });
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Title');

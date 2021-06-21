@@ -1,5 +1,5 @@
-import 'regenerator-runtime/runtime'
-import api from '../src/Objects/api'
+import 'regenerator-runtime/runtime';
+import api from '../src/Objects/api';
 
 describe('Testing API', () => {
   it('it should return the scores object', async () => {
