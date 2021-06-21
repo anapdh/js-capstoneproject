@@ -8,7 +8,8 @@ const ScoresScene = (() => {
     form.className = 'form-group text-center';
     form.style.position = 'absolute';
     form.style.top = '280px';
-    form.style.left = '280px';
+    form.style.left = '42%';
+    form.style.right = '42%';
     form.innerHTML = `
       <input class="form-control" type="search" id="input" placeholder="Enter your name" aria-label="Search" required/></br>
       <button class="form-control btn btn-secondary btn-block" type="submit" id="submit"> Submit Score</button>
@@ -26,7 +27,7 @@ const ScoresScene = (() => {
     setTimeout(() => {
       button.onclick = () => {
         if (input.value !== '') {
-          form.innerHTML = '<h3 id="submitting">Posting... </h3>';
+          form.innerHTML = '<h3 id="submitting">Posting score... </h3>';
           scoreAPI.submit(input.value, score).then((response) => {
             form.innerHTML = `<h3 id="response">${response.result} </h3>`;
           });

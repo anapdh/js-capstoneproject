@@ -22,7 +22,7 @@ const api = (() => {
     }
   };
 
-  const submit = async (name, score) => {
+  const submit = async (user, score) => {
     try {
       const result = await fetch(
         `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${key}/scores/`,
@@ -33,7 +33,7 @@ const api = (() => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            user: name,
+            user: user,
             score: Number(score),
           }),
         },

@@ -16,10 +16,10 @@ export default class LeaderboardScene extends Phaser.Scene {
      this.topTenText.setOrigin(0.5, 0.5);
 
      scoreAPI.ScoreList().then((response) => {
-      const leaderB = response.result;
-      for (let i = 0; i < 8; i += 1) {
-        this.scoreText = this.add.text(250, i * 50 + 100, `${leaderB[i].user}: ${leaderB[i].score} points`, { fontSize: '25px', fill: '#fff' });
-      }
+      console.log(response.result[0].user);
+        for (let i = 0; i < response.result.length && i < 8; i += 1) {
+        this.add.text(250, i * 50 + 100, `${response.result[i].user} : ${response.result[i].score} points`, { fontSize: '25px', fill: '#fff' });
+       }
     });
     
     // Title Score
