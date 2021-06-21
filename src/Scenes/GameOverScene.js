@@ -8,7 +8,6 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-
     this.add.image(400, 300, 'bg');
 
     this.title = this.add.text(400, 120, 'Game Over', {
@@ -46,8 +45,18 @@ export default class GameOverScene extends Phaser.Scene {
       this.scene.start('Game');
     });
 
+    // Leaderboard button
+    this.gameButton = btn(this, 400, 460, 'Leaderboard', 35), {
+      font: '35px monospace',
+      fill: '#555',
+    }
+    this.gameButton.on('pointerdown', () => {
+      ScoresScene.removeElements();
+      this.scene.start('Leaderboard');
+    });
+
     // Menu button
-    this.gameButton = btn(this, 400, 500, 'Menu', 35), {
+    this.gameButton = btn(this, 400, 520, 'Menu', 35), {
       font: '35px monospace',
       fill: '#555',
     }

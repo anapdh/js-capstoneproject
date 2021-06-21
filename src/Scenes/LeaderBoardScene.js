@@ -13,13 +13,13 @@ export default class LeaderboardScene extends Phaser.Scene {
      progressBox.fillStyle(0x222222, 0.8);
      progressBox.fillRect(0, 0, 800, 600);
 
-     this.topTenText = this.add.text(400, 50, 'Top 10 Scores', { fontSize: '32px', fill: '#fff' });
+     this.topTenText = this.add.text(400, 50, 'Top  Scores', { fontSize: '32px', fill: '#fff' });
      this.topTenText.setOrigin(0.5, 0.5);
 
      scoreAPI.ScoreList().then((response) => {
       const leaderB = response.result;
-      for (let i = 0; i < 10; i += 1) {
-        this.scoreText = this.add.text(250, i * 40 + 100, `${leaderB[i].user}: ${leaderB[i].score} points`, { fontSize: '25px', fill: '#fff' });
+      for (let i = 0; i < 8; i += 1) {
+        this.scoreText = this.add.text(250, i * 50 + 100, `${leaderB[i].user}: ${leaderB[i].score} points`, { fontSize: '25px', fill: '#fff' });
       }
     });
     
