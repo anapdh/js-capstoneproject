@@ -5,7 +5,7 @@
 
 > A platform game built with Phaser 3.
 
-This little bunny got lost in the big city and now he has to run for his life! Help him to avoid the city building roles and collecting stars for gaining strength.
+This little bunny got lost in the big city and now he has to run for his life! Help him to avoid the city buildings' holes and collecting stars for gaining strength.
 
 ## Screenshots
 
