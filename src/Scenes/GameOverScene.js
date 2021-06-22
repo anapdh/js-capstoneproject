@@ -28,9 +28,10 @@ export default class GameOverScene extends Phaser.Scene {
     this.score.setOrigin(0.5, 0.5);
 
     // Buttons constructor
-    const btn = (scene, positionX, positionY, btnDet, textSize) => {
+    const btn = (scene, positionX, positionY, btnDet, textSize, fill) => {
       const btn = scene.add.text(positionX, positionY, btnDet, {
         fontSize: textSize,
+        fill: fill,
       });
       btn.setOrigin(0.5, 0);
       btn.setInteractive();
@@ -38,21 +39,21 @@ export default class GameOverScene extends Phaser.Scene {
     };
 
     // Play button
-    this.gameButton = btn(this, 400, 400, 'Play Again', 35, { font: '35px monospace', fill: '#555' });
+    this.gameButton = btn(this, 400, 400, 'Play Again', 35, '#444');
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Game');
     });
 
     // Leaderboard button
-    this.gameButton = btn(this, 400, 460, 'Leaderboard', 35, { font: '35px monospace', fill: '#555' });
+    this.gameButton = btn(this, 400, 460, 'Leaderboard', 35, '#444');
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Leaderboard');
     });
 
     // Menu button
-    this.gameButton = btn(this, 400, 520, 'Menu', 35, { font: '35px monospace', fill: '#555' });
+    this.gameButton = btn(this, 400, 520, 'Menu', 35, '#444');
     this.gameButton.on('pointerdown', () => {
       ScoresScene.removeElements();
       this.scene.start('Title');
