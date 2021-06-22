@@ -95,9 +95,6 @@ export default class GameScene extends Phaser.Scene {
       });
     }, null, this);
 
-    // checking for input
-    this.input.on('pointerdown', this.jump, this);
-
     // SCORES
     scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
   }
@@ -146,6 +143,11 @@ export default class GameScene extends Phaser.Scene {
       const nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap, minPlatformHeight, maxPlatformHeight);
       this.addPlatform(nextPlatformWidth, 800 + nextPlatformWidth / 2, nextPlatformHeight);
     }
+
+        // checking for input
+        this.input.on('pointerdown', this.jump, this);
+        this.input.keyboard.on('keyup', this.jump, this);
+        this.input.keyboard.on('space', this.jump, this);
   }
 
   // FUNCTIONS
