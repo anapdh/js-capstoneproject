@@ -31,7 +31,7 @@ export default class GameOverScene extends Phaser.Scene {
     const btn = (scene, positionX, positionY, btnDet, textSize, fill) => {
       const btn = scene.add.text(positionX, positionY, btnDet, {
         fontSize: textSize,
-        fill: fill,
+        fill,
       });
       btn.setOrigin(0.5, 0);
       btn.setInteractive();

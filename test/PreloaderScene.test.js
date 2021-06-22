@@ -8,7 +8,7 @@ test('PreloaderScene is a function', () => {
 });
 
 test('PreloaderScene should be a subclass of Phaser.Scene', () => {
-expect(PreloaderScene).toBeSubclassOf(Phaser.Scene);
+  expect(PreloaderScene).toBeSubclassOf(Phaser.Scene);
 });
 
 test('PreloaderScene has Scene Title key name', () => {

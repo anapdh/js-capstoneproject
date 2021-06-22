@@ -8,7 +8,7 @@ test('CreditsScene is a function', () => {
 });
 
 test('CreditsScene should be a subclass of Phaser.Scene', () => {
-expect(CreditsScene).toBeSubclassOf(Phaser.Scene);
+  expect(CreditsScene).toBeSubclassOf(Phaser.Scene);
 });
 
 test('CreditsScene has Scene Title key name', () => {

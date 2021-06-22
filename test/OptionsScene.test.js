@@ -8,7 +8,7 @@ test('OptionsScene is a function', () => {
 });
 
 test('OptionsScene should be a subclass of Phaser.Scene', () => {
-expect(OptionsScene).toBeSubclassOf(Phaser.Scene);
+  expect(OptionsScene).toBeSubclassOf(Phaser.Scene);
 });
 
 test('OptionsScene has Scene Title key name', () => {

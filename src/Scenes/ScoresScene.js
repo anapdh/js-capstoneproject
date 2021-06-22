@@ -7,7 +7,7 @@ const ScoresScene = (() => {
     form.setAttribute('id', 'form');
     form.className = 'form-group text-center';
     form.style.position = 'absolute';
-    form.style.top = '48%';
+    form.style.top = '270px';
     form.style.left = '42%';
     form.style.right = '42%';
     form.innerHTML = `

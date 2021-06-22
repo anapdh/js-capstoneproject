@@ -8,7 +8,7 @@ test('GameOverScene is a function', () => {
 });
 
 test('GameOverScene should be a subclass of Phaser.Scene', () => {
-expect(GameOverScene).toBeSubclassOf(Phaser.Scene);
+  expect(GameOverScene).toBeSubclassOf(Phaser.Scene);
 });
 
 test('GameOverScene has Scene Title key name', () => {
