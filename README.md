@@ -29,7 +29,7 @@ This little bunny got lost in the big city and now he has to run for his life! H
 - Git and GitHub.
 
 ## Live Demo
-[Play the game!](https://60d12b8ffef6567658e115f5--stoic-borg-59d7cd.netlify.app/)
+[Play the game!](https://admiring-einstein-87e3c5.netlify.app/)
 
 ## Prerequisites
 
