@@ -18,9 +18,9 @@ This little bunny got lost in the big city and now he has to run for his life! H
 - Webpack;
 - Bootstrap;
 - Git and GitHub.
-<!-- 
+
 ## Live Demo
-[Play the game!](https://anapdh.github.io/weather-app/dist/index.html) -->
+[Play the game!](https://60d12b8ffef6567658e115f5--stoic-borg-59d7cd.netlify.app/)
 
 ## Prerequisites
 
@@ -60,10 +60,11 @@ To run all the tests, type on your terminal the command `jest` or `npm test`.
 ## Acknowledgment
 A special thanks to:
 
-Tutorial: [Emanuelle Feronato](https://www.emanueleferonato.com/2018/11/13/build-a-html5-endless-runner-with-phaser-in-a-few-lines-of-code-using-arcade-physics-and-featuring-object-pooling/);
-Bunny Sprite: [OpenGameArt](https://opengameart.org/content/bunny-sprite);
-Background: [ansimuz.com](https://ansimuz.com/site/);
-Helpful Friends ❤️: [João Paulo](https://github.com/jpdf00) & [Jhonatan Sarrazola](https://github.com/jssarrazolaa).
+- Tutorial: [Emanuelle Feronato](https://www.emanueleferonato.com/tag/endless-runner/);
+- Bunny Sprite: [OpenGameArt](https://opengameart.org/content/bunny-sprite);
+- Background: [ansimuz.com](https://ansimuz.com/site/);
+- Coins: [kenney.nl](https://www.kenney.nl/assets);
+- Helpful Friends ❤️: [João Paulo](https://github.com/jpdf00) & [Jhonatan Sarrazola](https://github.com/jssarrazolaa).
 
 ## 🤝 Contributing
 
