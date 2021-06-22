@@ -15,12 +15,14 @@ export default class LeaderboardScene extends Phaser.Scene {
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(0, 0, 800, 600);
 
-    this.topTenText = this.add.text(400, 50, 'Last Scores', { fontSize: '32px', fill: '#fff' });
+    this.topTenText = this.add.text(400, 50, 'Top 8 Scores', { fontSize: '30px', fill: '#fff' });
     this.topTenText.setOrigin(0.5, 0.5);
 
     scoreAPI.ScoreList().then((response) => {
-      for (let i = 0; i < response.result.length && i < 8; i += 1) {
-        this.add.text(250, i * 50 + 100, `${response.result[i].user} : ${response.result[i].score} points`, { fontSize: '25px', fill: '#fff' });
+      const leaderBoard = response.result;
+      const sortedScore = leaderBoard.sort((a, b) => b.score - a.score);
+      for (let i = 0; i < leaderBoard.length && i < 8; i += 1) {
+        this.add.text(250, i * 50 + 100, `${sortedScore[i].user} : ${sortedScore[i].score} points`, { fontSize: '24px', fill: '#fff' });
       }
     });
 

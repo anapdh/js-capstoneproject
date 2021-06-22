@@ -144,10 +144,10 @@ export default class GameScene extends Phaser.Scene {
       this.addPlatform(nextPlatformWidth, 800 + nextPlatformWidth / 2, nextPlatformHeight);
     }
 
-        // checking for input
-        this.input.on('pointerdown', this.jump, this);
-        this.input.keyboard.on('keyup', this.jump, this);
-        this.input.keyboard.on('space', this.jump, this);
+    // checking for input to jump
+    this.input.on('pointerdown', this.jump, this);
+    this.input.keyboard.on('keyup', this.jump, this);
+    this.input.keyboard.on('space', this.jump, this);
   }
 
   // FUNCTIONS
