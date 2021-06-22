@@ -11,6 +11,15 @@ This little bunny got lost in the big city and now he has to run for his life! H
 
 ![screenshot](/assets/screenshot.png)
 
+## Game instructions
+
+- This game is an endless runner platformer. The platforms appear infinitely until the game ends and the game character (the bunny) has to jump from platform to platform;
+- If the bunny falls from the platform, the game is over;
+- Your progress (score) is measured by the number of stars you collect. Each star counts 10 points.
+- To jump you have to simply click on the screen with the left mouse button. Clicking twice, you'll jump 2x (limit of jumps at once);
+- If you have a score above 0 points, you can save your score to the leaderboard by submitting your name in the GameOver screen;
+- You can check the leaderboard by clicking on the leaderboard on the main menu.
+
 ## Built With
 
 - Html & JavaScript;
@@ -78,4 +87,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/anapdh/js-capstoneproject/blob/develop/LICENSE.md) licensed.
+This project is [MIT](https://github.com/anapdh/js-capstoneproject/blob/feature/running-bunny/LICENSE.md) licensed.

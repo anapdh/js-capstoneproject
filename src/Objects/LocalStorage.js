@@ -5,7 +5,7 @@ const LocalStorage = (() => {
   const getScore = () => {
     const score = JSON.parse(localStorage.getItem('score'));
     if (!score) {
-      return 0 + ". Try again :)";
+      return `${0}. Try again :)`;
     }
     return score;
   };

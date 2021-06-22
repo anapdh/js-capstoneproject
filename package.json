@@ -1,7 +1,7 @@
 {
-  "name": "phaser3-project-template-3",
+  "name": "running-bunny",
   "version": "1.0.0",
-  "description": "A Phaser 3 Project Template",
+  "description": "A platform game made using Phaser 3 and Project Template",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://scottwestover@bitbucket.org/creativerendering/phaser3-template.git"
+    "url": "https://github.com/anapdh/js-capstoneproject/tree/develop"
   },
   "license": "MIT",
-  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "licenseUrl": "https://github.com/anapdh/js-capstoneproject/blob/feature/running-bunny/LICENSE.md",
   "bugs": {
-    "url": "https://github.com/photonstorm/phaser3-project-template/issues"
+    "url": "https://github.com/anapdh/js-capstoneproject/issues"
   },
-  "homepage": "https://github.com/photonstorm/phaser3-project-template#readme",
+  "homepage": "https://app.netlify.com/sites/stoic-borg-59d7cd/deploys/60d132f58d5890000801c59a",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.28.0",
