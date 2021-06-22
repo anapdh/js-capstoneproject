@@ -1,27 +1,26 @@
-<!-- ![](https://img.shields.io/badge/Microverse-blueviolet) ![](https://img.shields.io/badge/JavaScript-yellow)
-
-https://www.emanueleferonato.com/2018/11/13/build-a-html5-endless-runner-with-phaser-in-a-few-lines-of-code-using-arcade-physics-and-featuring-object-pooling/
-
-# WEATHER APP
-
-> A weather forecast site using the [OpenWeather](https://openweathermap.org/) API.
-
-Original project specification: [The Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/weather-app).
+![](https://img.shields.io/badge/Microverse-blueviolet) ![](https://img.shields.io/badge/JavaScript-yellow) ![](https://img.shields.io/badge/Phaser3-pink)
 
 
-## Built With
+# RUNNING BUNNY
 
-- Html, CSS, and JavaScript;
-- Git and GitHub.
+> A platform game built with Phaser 3.
+
+This little bunny got lost in the big city and now he has to run for his life! Help him to avoid the city building roles and collecting stars for gaining strength.
 
 ## Screenshots
 
-![screenshot](./assets/imgs/screenshot2.png)
-![screenshot](./assets/imgs/screenshot3.png)
-![screenshot](./assets/imgs/screenshot4.png)
+![screenshot](/assets/screenshot.png)
 
+## Built With
+
+- Html & JavaScript;
+- Phaser;
+- Webpack;
+- Bootstrap;
+- Git and GitHub.
+<!-- 
 ## Live Demo
-[Weather App](https://anapdh.github.io/weather-app/dist/index.html)
+[Play the game!](https://anapdh.github.io/weather-app/dist/index.html) -->
 
 ## Prerequisites
 
@@ -31,23 +30,23 @@ Original project specification: [The Odin Project](https://www.theodinproject.co
 
 To get a local copy up and run the project, follow these simple example steps:
 
-### Install
+### Setup
 
-You can download the code to your personal computer cloning the repository using the following command:
+To get a local copy and run this repository, follow these simple example steps:
 
-```
-git clone https://github.com/anapdh/weather-app.git
-```
+1. Open your terminal and go to the directory where you want to clone the repository.
 
-After cloning the repository and opening it in your code editor, run the following code in the terminal:
+2. Download/clone this repository [GitHub Repository](https://github.com/anapdh/js-capstoneproject) on your computer: type `git clone https://github.com/anapdh/js-capstoneproject`.
+(In case you need more help, check out this link: [Cloning a GitHub Repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
-```
-npm install
-```
+3. Still in your terminal, use the command `cd` to go to the place where you saved/cloned the repository. For example: _Desktop/User/js-capstoneproject/_. You may use the command `ls` to see the files and repositories existent in your current location.
 
-### Run
+4. Install the necessary configurations to run the project: type `npm install`.
 
-Run the application by launching your local webserver and index.html file in the browser: http://127.0.0.1:5500/dist/index.html
+5. Now your environment is ready to run the project! Run the application by typing ```npm start``` and launching your local webserver and index.html file in the browser: http://localhost:8000.
+### Run tests
+
+To run all the tests, type on your terminal the command `jest` or `npm test`.
 
 ## Authors
 
@@ -57,11 +56,20 @@ Run the application by launching your local webserver and index.html file in the
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/anapdh)
 - Twitter: [@dev_anahub](https://twitter.com/dev_anahub)
 
+
+## Acknowledgment
+A special thanks to:
+
+Tutorial: [Emanuelle Feronato](https://www.emanueleferonato.com/2018/11/13/build-a-html5-endless-runner-with-phaser-in-a-few-lines-of-code-using-arcade-physics-and-featuring-object-pooling/);
+Bunny Sprite: [OpenGameArt](https://opengameart.org/content/bunny-sprite);
+Background: [ansimuz.com](https://ansimuz.com/site/);
+Helpful Friends ❤️: [João Paulo](https://github.com/jpdf00) & [Jhonatan Sarrazola](https://github.com/jssarrazolaa).
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/anapdh/weather-app/issues).
+Feel free to check the [issues page](https://github.com/anapdh/js-capstoneproject/issues).
 
 ## Show your support
 
@@ -69,4 +77,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/anapdh/weather-app/blob/develop/LICENSE.md) licensed. -->
+This project is [MIT](https://github.com/anapdh/js-capstoneproject/blob/develop/LICENSE.md) licensed.
