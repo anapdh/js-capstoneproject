@@ -52,7 +52,7 @@ To get a local copy and run this repository, follow these simple example steps:
 
 4. Install the necessary configurations to run the project: type `npm install`.
 
-5. Now your environment is ready to run the project! Run the application by typing ```npm start``` and launching your local webserver and index.html file in the browser: http://localhost:8000.
+5. Now your environment is ready to run the project! Run the application by typing ```npm start``` and launching your local webserver and index.html file in the browser: http://localhost:8080.
 ### Run tests
 
 To run all the tests, type on your terminal the command `jest` or `npm test`.
