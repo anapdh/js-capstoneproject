@@ -13,17 +13,18 @@ This little bunny got lost in the big city and now he has to run for his life! H
 
 ## Game Design
 
-- This game is an endless runner platformer. The platforms appear infinitely until the game ends and the game character (the bunny) has to jump from platform to platform;
+- This game is an Endless Runner [Platform Game](https://en.wikipedia.org/wiki/Platform_game).
+- The platforms appear infinitely until the game ends and the game character (the bunny) has to jump from platform to platform;
 - If the bunny falls from the platform, the game is over;
 - Your progress (score) is measured by the number of stars you collect. Each star counts 10 points.
-- To jump you have to simply click on the screen with the left mouse button, or use whether the key up arrow or space in your keyboard. Clicking twice, you'll jump 2x (limit of jumps at once);
-- If you have a score above 0 points, you can save your score to the leaderboard by submitting your name in the GameOver screen;
-- You can check the leaderboard by clicking on the leaderboard on the main menu.
+- To jump, you have to simply click on the screen with the left mouse button, or use whether the key up arrow or space in your keyboard. Clicking twice, you'll jump 2x (limit of jumps at once);
+- If you have a score above 0 points, you can save your score to the leaderboard by submitting your name in the Game Over screen;
+- You can check the leaderboard by clicking on the "Leaderboard" on the Main Menu or Gave Over Scene.
 
 ## Built With
 
 - Html & JavaScript;
-- Phaser;
+- Phaser3;
 - Webpack;
 - Bootstrap;
 - Git and GitHub.
@@ -63,7 +64,7 @@ To get a local copy and run this repository there are 2 possible ways:
 1. on the very beginning of this page, in the up-left corner, you will see a green button "CODE", click there;
 
 2. After clicking, it will open menu options. Select to download the zip document and save it whenever you'd like, as shown in the image below:
-![tutorial1](/assets/tutorial1.png)
+>![tutorial1](/assets/tutorial1.png)
 
 3. Unzip the file (you can unzip it by clicking with the right mouse option on the file, in "Extract All" and selecting a destiny folder);
 
@@ -75,7 +76,7 @@ To get a local copy and run this repository there are 2 possible ways:
 
 6. Get back to the topic "How to Play" to read the game instructions.
 
-### - If you are used the terminal usage:
+### - If you are used the terminal usage (technical user):
 
 1. Open your terminal and go to the directory where you want to clone the repository;
 
