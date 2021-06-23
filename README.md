@@ -3,7 +3,7 @@
 
 # RUNNING BUNNY
 
-> A platform game built with Phaser 3.
+> A platformer game using Phaser3 library and Vanilla JS. This project features the knowledge of Webpack, ES6, JS Modules, Async code, DOM, JSON and Jest tests.
 
 This little bunny got lost in the big city and now he has to run for his life! Help him to avoid the city buildings' holes and collecting stars for gaining strength.
 
