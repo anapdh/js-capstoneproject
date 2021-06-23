@@ -9,7 +9,12 @@ This little bunny got lost in the big city and now he has to run for his life! H
 
 ## Screenshots
 
+![screenshot](/assets/screenshotMenu.png)
+---
 ![screenshot](/assets/screenshot.png)
+---
+![screenshot](/assets/screenshotGameOver.png)
+---
 
 ## Game Design
 
