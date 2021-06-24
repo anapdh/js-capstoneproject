@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import Phaser from 'phaser';
+import '../assets/styles/style.css';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
 import BootScene from './Scenes/BootScene';

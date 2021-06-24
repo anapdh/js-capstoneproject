@@ -35,14 +35,14 @@ This little bunny got lost in the big city and now he has to run for his life! H
 - Git and GitHub.
 
 ## Live Demo
-[Play the game!](https://admiring-einstein-87e3c5.netlify.app/)
+[Play the game!](https://running-bunny-2021.netlify.app)
 
 ## How to Play
 
-1. Go to the [Live Demo Link](https://admiring-einstein-87e3c5.netlify.app/) to play online;
+1. Go to the [Live Demo Link](https://running-bunny-2021.netlify.app) to play online;
   - If you'd like to download the game to run on your local machine, follow the steps "Running the game in your Local Machine" below;
 2. Click on the "Play" button to start the game;
-  - Use your mouse clicking or the keys (up arrow or spacebar) to jump;
+  - Use your mouse clicking (inside the game screen) or the keys (up arrow or spacebar) to jump;
   - Avoid falling from the building's platforms and try to collect as many coins as you can;
   - Each coin collected gives you 10 points. You can look at your score at the top-left corner of the screen;
   - If you fall from a building platform, you will see the "Game Over" screen with your final score;
