@@ -43,6 +43,7 @@ This little bunny got lost in the big city and now he has to run for his life! H
   - If you'd like to download the game to run on your local machine, follow the steps "Running the game in your Local Machine" below;
 2. Click on the "Play" button to start the game;
   - Use your mouse clicking (inside the game screen) or the keys (up arrow or spacebar) to jump;
+  - You can power your jump by double-clicking;
   - Avoid falling from the building's platforms and try to collect as many coins as you can;
   - Each coin collected gives you 10 points. You can look at your score at the top-left corner of the screen;
   - If you fall from a building platform, you will see the "Game Over" screen with your final score;
@@ -53,7 +54,7 @@ This little bunny got lost in the big city and now he has to run for his life! H
   - Click on the "Menu" button to go to the Main Menu scene;
 4. Don't forget to have fun while playing the game. :)
 
-## Running the game in your Local Machine
+## Running the game on your Local Machine
 ### Prerequisites
 
 - Node.js;
@@ -79,9 +80,9 @@ To get a local copy and run this repository there are 2 possible ways:
 - Install the necessary configurations to run the project: type `npm install`;
 - Run the application by typing ```npm start```, launch your local browser and type the URL: http://localhost:8080 in the browser;
 
-6. Get back to the topic "How to Play" to read the game instructions.
+6. Please, return to the topic "How to Play" to read the game instructions.
 
-### - If you are used the terminal usage (technical user):
+### - If you are used to the terminal usage (technical user):
 
 1. Open your terminal and go to the directory where you want to clone the repository;
 
@@ -100,7 +101,7 @@ To get a local copy and run this repository there are 2 possible ways:
 
 To run all the tests, type on your terminal the command `jest` or `npm test`.
 
-PS: you need to have jest installed in your computer. If you're having any errors, please, type ```npm install --save-dev jest```, or follow the [Jest Documentation to install it globally](https://archive.jestjs.io/docs/en/22.x/getting-started.html#running-from-command-line).
+PS: you need to have [jest](https://jestjs.io/) installed on your computer. If you have any errors, please, type ```npm install --save-dev jest```, or follow the [Jest Documentation to install it globally](https://archive.jestjs.io/docs/en/22.x/getting-started.html#running-from-command-line).
 
 ## Authors
 
