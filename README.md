@@ -117,7 +117,7 @@ A special thanks to:
 - Bunny Sprite: [OpenGameArt](https://opengameart.org/content/bunny-sprite);
 - Background: [ansimuz.com](https://ansimuz.com/site/);
 - Coins: [kenney.nl](https://www.kenney.nl/assets);
-- Helper Friends ❤️: [João Paulo](https://github.com/jpdf00) & [Jhonatan Sarrazola](https://github.com/jssarrazolaa).
+- Helping Friends ❤️: [João Paulo](https://github.com/jpdf00) & [Jhonatan Sarrazola](https://github.com/jssarrazolaa).
 
 ## 🤝 Contributing
 
